@@ -14,19 +14,29 @@ class ContactsList extends StatelessWidget {
         children: const <Widget>[
           Card(
             child: ListTile(
-              title: Text('Lucas', style: TextStyle(fontSize: 24)),
-              subtitle: Text('1000', style: TextStyle(fontSize: 16)),
+              title: Text(
+                'Lucas',
+                style: TextStyle(fontSize: 24),
+              ),
+              subtitle: Text(
+                '1000',
+                style: TextStyle(fontSize: 16),
+              ),
             ),
           ),
         ],
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (context) => const ContactForm(),
-            ),
-          );
+          Navigator.of(context)
+              .push(
+                MaterialPageRoute(
+                  builder: (context) => const ContactForm(),
+                ),
+              )
+              .then(
+                (newContact) => debugPrint('$newContact'),
+              );
         },
         backgroundColor: Theme.of(context).primaryColor,
         child: const Icon(Icons.add),

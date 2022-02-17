@@ -25,7 +25,7 @@ class BytebankApp extends StatelessWidget {
           bodyText2: TextStyle(fontSize: 14.0, fontFamily: 'Hind'),
         ),
         buttonTheme: ButtonThemeData(
-          buttonColor: Colors.blueAccent[700],
+          buttonColor: Colors.green[900],
           textTheme: ButtonTextTheme.primary,
         ),
       ),
