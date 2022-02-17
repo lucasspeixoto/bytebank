@@ -1,16 +1,37 @@
-# bytebank
+<h1 align="center">
+   ByteBank
+</h1>
 
-A new Flutter project.
+<br>
 
-## Getting Started
+## 💻 Projeto
 
-This project is a starting point for a Flutter application.
+Projeto de um app para transição bancária desenvolvido no curso 'Persistência com Flutter: Crie um app com armazenamento interno' da [Alura](https://www.alura.com.br/planos-cursos-online?gclid=Cj0KCQiA3rKQBhCNARIsACUEW_ZR4KUI3T0oGwYgC51z7KrMeowvbc4Q1LDFh2xqwHc8r7K1cueXTyAaAmf-EALw_wcB)
 
-A few resources to get you started if this is your first Flutter project:
+## ✨ Tecnologias
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+Esse projeto foi desenvolvido com as seguintes tecnologias:
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- [Flutter](https://flutter.dev/?gclid=Cj0KCQiAr5iQBhCsARIsAPcwROPG15yyqXVCMGJaCFGwtAR_CASdAO_F2F9VZZiP3mXTz8LK0x5-O9UaAp3SEALw_wcB&gclsrc=aw.ds)
+
+## 🔖 Layout
+
+![interface](assets/images/layout.png 'Layout')
+
+## 🚀 Instalação
+
+```bash
+# Clone o repositório e entre na pasta do projeto
+$ git clone https://github.com/lucasspeixoto/bytebank.git && cd bytebank
+
+
+# Execute a aplicação
+$ flutter run
+
+```
+
+## 📝 Licença
+
+Este projeto está licenciado sob a Licença MIT. Veja o arquivo [LICENSE](LICENSE) para obter mais detalhes.
+
+---
