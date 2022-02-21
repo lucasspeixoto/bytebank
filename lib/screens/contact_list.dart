@@ -1,6 +1,7 @@
 import 'package:bytebank/database/app_database.dart';
 import 'package:bytebank/models/contact.dart';
 import 'package:bytebank/screens/contact_form.dart';
+import 'package:bytebank/widgets/progress.dart';
 import 'package:flutter/material.dart';
 
 class ContactsList extends StatefulWidget {
@@ -16,7 +17,7 @@ class _ContactsListState extends State<ContactsList> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Contacts"),
+        title: const Text("Transfer"),
       ),
       body: FutureBuilder<List<Contact>>(
         initialData: const [],
@@ -27,16 +28,7 @@ class _ContactsListState extends State<ContactsList> {
               break;
             case ConnectionState
                 .waiting: //! Future iniciou mas não tem snapshot ainda
-              return Center(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: const [
-                    CircularProgressIndicator(),
-                    Text('Loading'),
-                  ],
-                ),
-              );
+              return const ProgressLoading();
             case ConnectionState
                 .active: //! Tem snapshot mas o Future não foi resolvido ainda
               break;
