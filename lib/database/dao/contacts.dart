@@ -1,4 +1,4 @@
-import 'dart:async';
+/* import 'dart:async';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:flutter/widgets.dart';
@@ -112,3 +112,4 @@ class Contact {
     return 'Contact{id: $id, name: $name, age: $accountNumber}';
   }
 }
+ */

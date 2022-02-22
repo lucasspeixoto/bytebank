@@ -1,4 +1,6 @@
+import 'package:bytebank/database/dao/contacts.dart';
 import 'package:bytebank/http/webclient.dart';
+import 'package:bytebank/models/transaction.dart';
 import 'package:bytebank/screens/dashboard.dart';
 import 'package:flutter/material.dart';
 
@@ -10,7 +12,15 @@ void main() {
   /* save(Contact(4, 'Liana', 23000)).then((id) {
     debugPrint('Id: $id');
   }); */
-  /* findAll().then((transactions) {
+  /*  save(
+    Transaction(
+      12350.0,
+      const Contact(id: 0, name: 'Fulano', accountNumber: 8500),
+    ),
+  ).then((transaction) {
+    debugPrint('transaction: $transaction');
+  }); */
+  /*  findAll().then((transactions) {
     debugPrint('transactions: $transactions');
   }); */
 }
