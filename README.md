@@ -6,7 +6,7 @@
 
 ## 💻 Projeto
 
-Projeto de um app para transição bancária desenvolvido no curso 'Persistência com Flutter: Crie um app com armazenamento interno' da [Alura](https://www.alura.com.br/planos-cursos-online?gclid=Cj0KCQiA3rKQBhCNARIsACUEW_ZR4KUI3T0oGwYgC51z7KrMeowvbc4Q1LDFh2xqwHc8r7K1cueXTyAaAmf-EALw_wcB)
+Projeto de um app para transição bancária desenvolvido no curso 'Persistência com Flutter: Crie um app com armazenamento interno' e 'Persistência com Flutter: Crie um app com armazenamento interno' da [Alura](https://www.alura.com.br/planos-cursos-online?gclid=Cj0KCQiA3rKQBhCNARIsACUEW_ZR4KUI3T0oGwYgC51z7KrMeowvbc4Q1LDFh2xqwHc8r7K1cueXTyAaAmf-EALw_wcB)
 
 ## ✨ Tecnologias
 
