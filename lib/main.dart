@@ -1,15 +1,18 @@
-import 'package:bytebank/database/dao/contacts.dart';
+/* import 'package:bytebank/database/dao/contacts.dart';
 import 'package:bytebank/http/webclient.dart';
-import 'package:bytebank/models/transaction.dart';
+import 'package:bytebank/models/transaction.dart'; */
 import 'package:bytebank/screens/dashboard.dart';
 import 'package:flutter/material.dart';
 
 /* import 'database/app_database.dart';
 import 'models/contact.dart'; */
 
+/* import 'database/app_database.dart';
+import 'models/contact.dart'; */
+
 void main() {
   runApp(const BytebankApp());
-  /* save(Contact(4, 'Liana', 23000)).then((id) {
+  /*  save(Contact(5, 'Lucas Peixoto', 23000)).then((id) {
     debugPrint('Id: $id');
   }); */
   /*  save(
