@@ -1,7 +1,11 @@
+import 'dart:async';
+
 import 'package:bytebank/http/webclient.dart';
 import 'package:bytebank/http/webclients/transaction_webclient.dart';
 import 'package:bytebank/models/contact.dart';
 import 'package:bytebank/models/transaction.dart';
+import 'package:bytebank/widgets/response_dialog.dart';
+import 'package:bytebank/widgets/transaction_auth_dialog.dart';
 import 'package:flutter/material.dart';
 
 class TransactionForm extends StatefulWidget {
@@ -16,6 +20,7 @@ class TransactionForm extends StatefulWidget {
 class _TransactionFormState extends State<TransactionForm> {
   final TextEditingController _valueController = TextEditingController();
   final TransactionWebClient _webClient = TransactionWebClient();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -65,9 +70,16 @@ class _TransactionFormState extends State<TransactionForm> {
                       final transactionCreated =
                           Transaction(value, widget.contact);
 
-                      _webClient.save(transactionCreated).then((transaction) {
-                        Navigator.pop(context);
-                      });
+                      showDialog(
+                        context: context,
+                        builder: (contextDialog) {
+                          return TransactionAuthDialog(
+                            onConfirm: (String password) {
+                              _save(transactionCreated, password, context);
+                            },
+                          );
+                        },
+                      );
                     },
                     style: ElevatedButton.styleFrom(
                       primary: Theme.of(context).primaryColor,
@@ -84,5 +96,48 @@ class _TransactionFormState extends State<TransactionForm> {
         ),
       ),
     );
+  }
+
+  void _save(
+    Transaction transactionCreated,
+    String password,
+    BuildContext context,
+  ) async {
+    _webClient.save(transactionCreated, password).then((transaction) {
+      _showSuccessfulMessage(transaction, context);
+    }).catchError((error) {
+      _showFailureMessage(context, message: error.message);
+    }, test: (error) => error is HttpException).catchError((error) {
+      _showFailureMessage(context,
+          message: 'timeout submitting the transaction');
+    }, test: (error) => error is TimeoutException).catchError(
+      (error) {
+        _showFailureMessage(context);
+      },
+    ); // Só executa o catchError se receber uma Expection
+  }
+
+  Future _showSuccessfulMessage(
+      Transaction transaction, BuildContext context) async {
+    // ignore: unnecessary_null_comparison
+    if (transaction != null) {
+      await showDialog(
+          context: context,
+          builder: (contextDialog) {
+            return const SuccessDialog('successful transaction');
+          });
+      Navigator.pop(context);
+    }
+  }
+
+  void _showFailureMessage(
+    BuildContext context, {
+    String message = 'Unknown error',
+  }) {
+    showDialog(
+        context: context,
+        builder: (contextDialog) {
+          return FailureDialog(message);
+        });
   }
 }

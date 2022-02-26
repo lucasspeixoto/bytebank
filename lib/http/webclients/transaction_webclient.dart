@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert';
 import 'package:bytebank/http/webclient.dart';
 import 'package:bytebank/models/transaction.dart';
@@ -16,17 +17,38 @@ class TransactionWebClient {
     return [];
   }
 
-  Future<Transaction> save(Transaction transaction) async {
+  Future<Transaction> save(Transaction transaction, String password) async {
     final String transactionJson = jsonEncode(transaction.toJson());
 
-    final Response response = await client.post(
-      uri,
-      headers: {
-        'Content-type': 'application/json',
-        'password': '1000',
-      },
-      body: transactionJson,
-    );
-    return Transaction.fromJson(jsonDecode(response.body));
+    await Future.delayed(const Duration(seconds: 10));
+
+    final Response response = await client
+        .post(
+          uri,
+          headers: {
+            'Content-type': 'application/json',
+            'password': password,
+          },
+          body: transactionJson,
+        )
+        .timeout(const Duration(seconds: 3));
+
+    if (response.statusCode == 200) {
+      return Transaction.fromJson(jsonDecode(response.body));
+    }
+
+    throw HttpException(_statusCodeResponses[response.statusCode]!);
   }
+
+  static final Map<int, String> _statusCodeResponses = {
+    400: 'There was an error submitting transaction',
+    401: 'UnAuthenticated failed',
+    409: 'transaction already exists'
+  };
+}
+
+class HttpException implements Exception {
+  final String message;
+
+  HttpException(this.message);
 }
